@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="universityModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="courses">
+    <Key>
+      <PropertyRef Name="CourseId" />
+      <PropertyRef Name="Professors_ProfessorId" />
+      <PropertyRef Name="Departaments_DepartamentId" />
+    </Key>
+    <Property Name="CourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Professors_ProfessorId" Type="Int32" Nullable="false" />
+    <Property Name="Departaments_DepartamentId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="students">
+    <Key>
+      <PropertyRef Name="StudentId" />
+      <PropertyRef Name="Faculties_FacultyId" />
+    </Key>
+    <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Faculties_FacultyId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="students_courses">
+    <Key>
+      <PropertyRef Name="Students_StudentId" />
+      <PropertyRef Name="Courses_CourseId" />
+    </Key>
+    <Property Name="Students_StudentId" Type="Int32" Nullable="false" />
+    <Property Name="Courses_CourseId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="universityEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="courses" EntityType="Self.courses" />
+    <EntitySet Name="students" EntityType="Self.students" />
+    <EntitySet Name="students_courses" EntityType="Self.students_courses" />
+  </EntityContainer>
+</Schema>
