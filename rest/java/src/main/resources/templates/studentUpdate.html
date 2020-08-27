@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ažuriraj podatke</title>
+
+
+</head>
+
+<body>
+
+<div class="container" style="width: 900px; padding-top:50px; padding-left: 50px; float:left;">
+    <h4> <a th:href="@{/api/html/students}"><i class="fa fa-arrow-left"></i> Natrag </a></h4>
+</div>
+    
+<div class="container" style="width: 700px; padding-top:80px;" data-status="active" th:if="${student.id != null}">
+   
+     <div class="container" style="width: 700px; padding-top:40px;">
+        <div th:if="${message}" th:text="${message}" class="alert alert-success" />
+    </div>
+         
+    <form th:action="@{/api/html/studentUpdate}" th:object="${student}" method="post">
+            <input id="id" name="id" type="hidden" th:field="${student.id}"/>
+    <div class="form-group">
+        <div class="col-xs-12 form-group">
+            <label>Ime</label>
+            <input type="text" class="form-control" th:field="${student.ime}">
+        </div>
+    </div>    
+    
+    <div class="form-group">
+        <div class="col-xs-12 form-group">
+            <label>Fakultet Id</label>
+            <input type="number" class="form-control" th:field="${student.fakultetId}">
+        </div>
+    </div>    
+        
+     <div class="form-group" style="float:right; padding-right:15px;">
+        <input type="submit" value="Pohrani" class="btn btn-success">
+    </div>  
+    </form>
+
+
+</div>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>
